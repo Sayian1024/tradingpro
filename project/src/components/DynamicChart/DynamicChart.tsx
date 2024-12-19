@@ -57,6 +57,17 @@ export const DynamicChart = () => {
         const processedChanged = processData(changed);
 
         // Update columns if needed
+
+        if (
+          notificationEnabled && // Check if notifications are enabled
+          (
+            !isPageVisible || // Trigger when page is not visible
+            (added.length > 0 || changed.length > 0) // Or when there are significant changes
+          )
+        ) {
+          triggerNotification(processedAdded, processedChanged);
+        }
+        
         if (
           columns.length === 1 &&
           (processedAdded.length > 0 || processedChanged.length > 0)
