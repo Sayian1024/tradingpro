@@ -13,11 +13,12 @@ export const generateChartOptions = (
   return {
     chart: {
       type: 'line',
+      stacked: false, // Explicitly set stacked to false
       animations: {
         enabled: true,
         dynamicAnimation: {
           enabled: true,
-          speed: 350,
+          speed: 1000,
         },
       },
       toolbar: {
@@ -71,6 +72,7 @@ export const generateChartOptions = (
       tickAmount: 10,
     },
     yaxis: {
+      forceNiceScale: true, // Ensure y-axis scales appropriately
       title: {
         text: 'Values',
         style: { color: isDarkMode ? '#fff' : '#000' },
@@ -123,12 +125,12 @@ export const generateChartOptions = (
     },
     colors,
     markers: {
-      size: 0,
-      hover: { size: 0 },
+      size: 4, // Increased marker size for better visibility
+      hover: { size: 6 },
     },
     fill: {
       type: 'solid',
-      opacity: 0.7,
+      opacity: 0.2, // Reduced opacity for better line visibility
     },
   };
 };
